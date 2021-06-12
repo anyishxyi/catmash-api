@@ -4,16 +4,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "cat")
-public class CatModel {
+public class Cat {
 	@Id
 	private String id;
 	private Integer vote;
 	private String imageData;
 
-	public CatModel() {
+	public Cat() {
 	}
 
-	public CatModel(Integer vote, String imageData) {
+	public Cat(Integer vote, String imageData) {
 		this.vote = vote;
 		this.imageData = imageData;
 	}
@@ -24,5 +24,21 @@ public class CatModel {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Integer getVote() {
+		return this.vote;
+	}
+
+	public void setVote(Integer vote) {
+		this.vote = vote;
+	}
+
+	public String getImageData() {
+		return this.imageData;
+	}
+
+	public void setImageData(String ImageData) {
+		this.imageData = imageData;
 	}
 }
