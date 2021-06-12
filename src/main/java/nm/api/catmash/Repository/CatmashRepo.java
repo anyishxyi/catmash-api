@@ -6,8 +6,8 @@ import nm.api.catmash.Model.Cat;
 
 public interface CatmashRepo extends MongoRepository<Cat, String> {
 
-	Cat addCat(Cat cat);
+	public Cat insert(Cat cat);
 
-	List<Cat> findAllCats();
+	public List<Cat> findAllCats();
 
 }

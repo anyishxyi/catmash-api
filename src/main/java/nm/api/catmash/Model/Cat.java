@@ -1,6 +1,8 @@
 package nm.api.catmash.Model;
 
+import org.springframework.core.style.ToStringCreator;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.aggregation.ConvertOperators.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "cat")
