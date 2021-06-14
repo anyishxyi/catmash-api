@@ -35,9 +35,10 @@ class CatmashApplicationTests {
 				.content(objectMapper.writeValueAsString(new Cat(0, "test")))).andExpect(status().isCreated());
 	}
 
-	// @Test
-	// public void shouldReturnAllCats() throws Exception {
-	// this.mockMvc.perform(get("/cats")).andExpect(status().isOk());
-	// }
+	@Test
+	public void shouldgetAllCats() throws Exception {
+		this.mockMvc.perform(get("/cats").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
 
 }
