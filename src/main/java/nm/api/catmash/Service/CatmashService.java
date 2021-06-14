@@ -5,8 +5,8 @@ import java.util.List;
 import nm.api.catmash.Model.Cat;
 
 public interface CatmashService {
-	public List<Cat> findAll();
+	public List<Cat> findAllCats();
 
-	public Cat newCat(Cat cat);
+	public Cat insertCat(Cat cat);
 
 }
