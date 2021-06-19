@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +44,19 @@ public class CatmashController {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 
+	@PutMapping(value = "/update")
+	public ResponseEntity<Cat> updateCatImg(@RequestBody Cat cat) {
+		try {
+			Cat catAdded = catmashServiceImpl.updateCat(cat);
+			if (catAdded != null || catAdded instanceof Cat)
+				return new ResponseEntity<Cat>(catAdded, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	}
 }

@@ -37,4 +37,16 @@ class CatmashApplicationTests {
 				.andExpect(status().isOk());
 	}
 
+	@Test
+	public void shouldUpdateCatInfo() throws Exception {
+		this.mockMvc.perform(get("/cats").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
+
+	// @Test
+	// public void shouldRemoveCat() throws Exception {
+	// this.mockMvc.perform(get("/cats").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
+	// .andExpect(status().isOk());
+	// }
+
 }
