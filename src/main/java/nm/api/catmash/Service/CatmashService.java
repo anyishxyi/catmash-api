@@ -9,4 +9,8 @@ public interface CatmashService {
 
 	public Cat insertCat(Cat cat);
 
+	public void removeCat(long catID);
+
+	public Cat updateCat(Cat cat);
+
 }

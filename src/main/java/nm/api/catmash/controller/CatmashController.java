@@ -27,6 +27,7 @@ public class CatmashController {
 			if (cats != null)
 				return new ResponseEntity<List<Cat>>(cats, HttpStatus.OK);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -35,17 +36,14 @@ public class CatmashController {
 	@PostMapping(value = "/save")
 	public ResponseEntity<Cat> saveCatImg(@RequestBody Cat cat) {
 		try {
-			System.out.println("before");
 			Cat catAdded = catmashServiceImpl.insertCat(cat);
-			System.out.println("after");
-			System.out.println(catAdded.getImageData());
 			if (catAdded != null || catAdded instanceof Cat)
 				return new ResponseEntity<Cat>(catAdded, HttpStatus.CREATED);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
 	}
 
 }

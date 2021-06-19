@@ -20,9 +20,16 @@ public class CatmashServiceImpl implements CatmashService {
 
 	@Override
 	public Cat insertCat(Cat cat) {
-		System.out.println("service");
-		Cat c = catmashRepository.insert(cat);
-		System.out.println(c.getId() + " - " + c.getImageData());
-		return c;
+		return catmashRepository.insert(cat);
+	}
+
+	@Override
+	public Cat updateCat(Cat cat) {
+		return catmashRepository.save(cat);
+	}
+
+	@Override
+	public void removeCat(long catID) {
+		catmashRepository.deleteById(catID);
 	}
 }
