@@ -23,7 +23,7 @@ jobs:
     - run: |
           mkdir src/main/resources
           touch src/main/resources/application.properties
-          echo ${{ secrets.CATMASH_DB_TEST }} >> src/main/resources/application.properties
+          echo spring.data.mongodb.uri=${{ secrets.__MONGO_URI__ }} >> src/main/resources/application.properties
     - run: ./mvnw clean verify
 
   # deploy:
