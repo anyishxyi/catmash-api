@@ -14,13 +14,14 @@ jobs:
         java-distribution: [ 'adopt' ]
     steps:
     - uses: actions/checkout@v2
-      name: Use test for java ${{ matrix.java-version }}
+      name: Use units tests for spring boot with java ${{ matrix.java-version }}
     - uses: actions/setup-java@v2
       with:
         distribution: ${{ matrix.java-distribution }}
         java-version: ${{ matrix.java-version }}
         check-latest: true
     - run: |
+          mkdir src/main/resources
           touch src/main/resources/application.properties
           echo ${{ secrets.CATMASH_DB_TEST }} >> src/main/resources/application.properties
     - run: ./mvnw clean verify
