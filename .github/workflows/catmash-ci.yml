@@ -1,9 +1,6 @@
 name: Build and test CI
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -19,7 +16,7 @@ jobs:
       contains('refs/heads/main', github.ref)
     steps:
     - uses: actions/checkout@v2
-    - name: Use test for java ${{ matrix.java-version }}
+      name: Use test for java ${{ matrix.java-version }}
     - uses: actions/setup-java@v2
       with:
         distribution: ${{ matrix.java-distribution }}
