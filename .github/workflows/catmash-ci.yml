@@ -1,0 +1,30 @@
+name: Build and test CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        java-version: [ '11' ]
+        java-distribution: [ 'adopt' ]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Build and test for node ${{ matrix.java-version }}
+    - uses: actions/setup-java@v2
+      with:
+        distribution: ${{ matrix.java-distribution }}
+        java-version: ${{ matrix.java-version }}
+        check-latest: true
+
+    - run: |
+          touch src/main/resources/application.properties
+          echo ${{ secrets.CATMASH_DB_TEST }} >> src/main/resources/application.properties
+
+    - run: ./mvnw clean verify
