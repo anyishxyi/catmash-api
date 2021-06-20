@@ -12,8 +12,6 @@ jobs:
       matrix:
         java-version: [ 11 ]
         java-distribution: [ 'adopt' ]
-    if:
-      contains('refs/heads/main', github.ref)
     steps:
     - uses: actions/checkout@v2
       name: Use test for java ${{ matrix.java-version }}
