@@ -42,7 +42,7 @@ class CatmashApplicationTests {
 	@Test
 	public void shouldUpdateCatInfo() throws Exception {
 		this.mockMvc.perform(put("/update").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(new Cat(11, 2, "test21")))).andExpect(status().isOk());
+				.content(objectMapper.writeValueAsString(new Cat(14, 2, "test21")))).andExpect(status().isOk());
 	}
 
 	@Test
