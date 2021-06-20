@@ -24,6 +24,8 @@ jobs:
           mkdir src/main/resources
           touch src/main/resources/application.properties
           echo spring.data.mongodb.uri=${{ secrets.__MONGO_URI__ }} >> src/main/resources/application.properties
+          ls src/main/resources/
+          cat src/main/resources/application.properties
     - run: ./mvnw clean verify
 
   # deploy:
