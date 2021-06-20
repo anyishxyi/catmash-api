@@ -21,6 +21,12 @@ public class Cat {
 		this.imageData = imageData;
 	}
 
+	public Cat(Integer id, Integer vote, String imageData) {
+		this.id = id;
+		this.vote = vote;
+		this.imageData = imageData;
+	}
+
 	public long getId() {
 		return id;
 	}

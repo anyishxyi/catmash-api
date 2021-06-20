@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -58,5 +59,16 @@ public class CatmashController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	}
+
+	@DeleteMapping(value = "/remove")
+	public ResponseEntity<Boolean> deleteCat(@RequestBody long catID) {
+		try {
+			catmashServiceImpl.removeCat(catID);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<Boolean>(true, HttpStatus.ACCEPTED);
 	}
 }
